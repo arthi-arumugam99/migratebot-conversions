@@ -1,75 +1,167 @@
-# MigrateBot — Real-World Migration Examples
+# MigrateBot — Automatic Code Migration Tool | 28 Real-World Examples
 
-**28 real open-source repos, automatically migrated by [MigrateBot](https://migratebot-lac.vercel.app).**
+**Automatically migrate Next.js, React, Vue, Angular, Django, WordPress, and 22 more frameworks. Powered by Claude AI.**
 
-Every folder below contains the **migrated output** of a real GitHub repository, converted by MigrateBot's AI-powered migration engine. Each folder includes a README linking to the original source repo.
+[**Try MigrateBot Free →**](https://migratebot-lac.vercel.app)
 
----
-
-## Results Summary
-
-| # | Migration | Original Repo | Files Migrated | Status |
-|---|-----------|--------------|----------------|--------|
-| 1 | [Next.js 14 → 15](nextjs-14-to-15/) | [BashirMohamedAli/nextjs14-starter](https://github.com/BashirMohamedAli/nextjs14-starter) | 8 | OK |
-| 2 | [Next.js 13 → 14](nextjs-13-to-14/) | [shadcn-ui/next-template](https://github.com/shadcn-ui/next-template) | 3 | OK |
-| 3 | [React 18 → 19](react-18-to-19/) | [joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate](https://github.com/joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate) | 1 | OK |
-| 4 | [Tailwind CSS 3 → 4](tailwind-3-to-4/) | [joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate](https://github.com/joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate) | 4 | OK |
-| 5 | [Supabase v1 → v2](supabase-v1-to-v2/) | [salmandotweb/nextjs-supabase-boilerplate](https://github.com/salmandotweb/nextjs-supabase-boilerplate) | 1 | OK |
-| 6 | [Django 4 → 5](django-4-to-5/) | [BobsProgrammingAcademy/student-management-system](https://github.com/BobsProgrammingAcademy/student-management-system) | 11 | OK |
-| 7 | [FastAPI + Pydantic v2](fastapi-upgrade/) | [testdrivenio/fastapi-crud-async](https://github.com/testdrivenio/fastapi-crud-async) | 5 | OK |
-| 8 | [CRA → Vite](cra-to-vite/) | [machadop1407/firebase-react-crud](https://github.com/machadop1407/firebase-react-crud) | 2 | OK |
-| 9 | [JavaScript → TypeScript](js-to-typescript/) | [fraigo/node-express-rest-api-example](https://github.com/fraigo/node-express-rest-api-example) | 2 | OK |
-| 10 | [React Class → Hooks](react-class-to-hooks/) | [devat-youtuber/shopping-cart-react](https://github.com/devat-youtuber/shopping-cart-react) | 9 | OK |
-| 11 | [Vue 2 → 3](vue-2-to-3/) | [lstoeferle/vite-vue2-starter](https://github.com/lstoeferle/vite-vue2-starter) | 3 | OK |
-| 12 | [Angular 16 → 17](angular-16-to-17/) | [bezkoder/angular-16-crud-example](https://github.com/bezkoder/angular-16-crud-example) | 18 | OK |
-| 13 | [Nuxt 2 → 3](nuxt-2-to-3/) | [nuxt-community/typescript-template](https://github.com/nuxt-community/typescript-template) | 9 | OK |
-| 14 | [Pages Router → App Router](pages-to-app-router/) | [prisma/blogr-nextjs-prisma](https://github.com/prisma/blogr-nextjs-prisma) | 6 | OK |
-| 15 | [Webpack → Vite](webpack-to-vite/) | [taniarascia/webpack-boilerplate](https://github.com/taniarascia/webpack-boilerplate) | 6 | OK |
-| 16 | [CommonJS → ESM](commonjs-to-esm/) | [fraigo/node-express-rest-api-example](https://github.com/fraigo/node-express-rest-api-example) | 3 | OK |
-| 17 | [Prisma → Drizzle](prisma-to-drizzle/) | [berthutapea/typescript-express-prisma-starter](https://github.com/berthutapea/typescript-express-prisma-starter) | 11 | OK |
-| 18 | [Firebase → Supabase](firebase-to-supabase/) | [machadop1407/firebase-react-crud](https://github.com/machadop1407/firebase-react-crud) | 3 | OK |
-| 19 | [Supabase → Neon](supabase-to-neon/) | [Ali-Onar/nextjs-supabase-todo-app](https://github.com/Ali-Onar/nextjs-supabase-todo-app) | 10 | OK |
-| 20 | [Supabase → Raw Postgres](supabase-to-raw-postgres/) | [Ali-Onar/nextjs-supabase-todo-app](https://github.com/Ali-Onar/nextjs-supabase-todo-app) | 8 | OK |
-| 21 | [NextAuth v4 → Auth.js v5](nextauth-v4-to-v5/) | [janhbnr/nextauth-nextjs14-starter](https://github.com/janhbnr/nextauth-nextjs14-starter) | 12 | OK |
-| 22 | [WordPress 5.x → 6.x](wordpress-5-to-6/) | [gregsullivan/_tw](https://github.com/gregsullivan/_tw) | 13 | OK |
-| 23 | [WordPress → Headless Next.js](wordpress-to-headless/) | [psorensen/tailwind_s](https://github.com/psorensen/tailwind_s) | 20 | OK |
-| 24 | [WooCommerce → Shopify](woocommerce-to-shopify/) | [tutsplus/developing-a-woocommerce-theme](https://github.com/tutsplus/developing-a-woocommerce-theme) | 3 | OK |
-| 25 | [PHP Themes → Block Themes](php-to-block-themes/) | [psorensen/tailwind_s](https://github.com/psorensen/tailwind_s) | 19 | OK |
-| 26 | [Elementor → Native Blocks](elementor-to-blocks/) | [bmarshall511/elementor-awesomesauce](https://github.com/bmarshall511/elementor-awesomesauce) | 2 | OK |
-| 27 | [ACF → Native Meta Fields](acf-to-native-fields/) | [steam0r/acf-wp-theme-skeleton](https://github.com/steam0r/acf-wp-theme-skeleton) | 2 | OK |
-| 28 | [WordPress → Webflow](wordpress-to-webflow/) | [psorensen/tailwind_s](https://github.com/psorensen/tailwind_s) | 12 | OK |
-
-**Total: 28/28 migrations passed. 195 files migrated across all repos.**
+This repository contains **28 real-world migration examples** — each one is a real open-source GitHub repo that was automatically converted by [MigrateBot](https://migratebot-lac.vercel.app). Every folder includes the fully migrated codebase and a README linking back to the original source repository.
 
 ---
 
-## How These Were Generated
+## Why MigrateBot?
 
-Each migration was run through MigrateBot's full pipeline:
+Framework migrations are the most dreaded task in software engineering. Upgrading Next.js 14 to 15, converting Vue 2 to Vue 3, switching from Firebase to Supabase — these projects take weeks of tedious, error-prone manual work.
 
-1. **Acquire** — Cloned the repo from GitHub
-2. **Detect** — Verified the project matches the migration type
-3. **Classify** — Categorized each file by what needs to change
-4. **Transform** — Applied deterministic transforms (package.json bumps, config renames) + AI transforms (Claude Sonnet for complex code rewrites)
-5. **Validate** — Checked transformed code for syntax issues
+**MigrateBot does it in minutes.** Upload your repo, get a migration plan, and download the fully converted codebase.
 
-Migrated files contain:
-- `// MIGRATED:` comments explaining each change
-- `// TODO: Manual review` comments where human attention is recommended
-
----
-
-## What is MigrateBot?
-
-[MigrateBot](https://migratebot-lac.vercel.app) is an AI-powered code migration tool that automatically upgrades your projects between framework versions and platforms.
-
-- **28 migration types** — from Next.js upgrades to full platform switches
-- **Deterministic + AI hybrid** — mechanical changes handled instantly, complex transforms use Claude AI
+- **28 supported migrations** — framework upgrades, architecture changes, and full platform switches
+- **AI-powered transforms** — Claude analyzes each file and applies context-aware migrations
+- **Deterministic + AI hybrid** — mechanical changes (package.json bumps, config renames) are instant; complex code rewrites use AI
 - **Migration plan first** — see exactly what will change before committing
+- **Inline documentation** — every migrated file includes `// MIGRATED:` comments explaining changes
 - **1,007 integration tests** — every rule set tested with realistic code patterns
+
+---
+
+## Migration Examples
+
+### Tier 1 — Framework Upgrades
+
+Upgrade your framework to the latest version without rewriting your codebase by hand.
+
+| Migration | Original Repo | Files Migrated | Folder |
+|-----------|--------------|----------------|--------|
+| **Migrate Next.js 14 to 15** — async request APIs, React 19, caching defaults | [BashirMohamedAli/nextjs14-starter](https://github.com/BashirMohamedAli/nextjs14-starter) | 8 | [nextjs-14-to-15/](nextjs-14-to-15/) |
+| **Migrate Next.js 13 to 14** — Server Actions, metadata viewport, `next/font` | [shadcn-ui/next-template](https://github.com/shadcn-ui/next-template) | 3 | [nextjs-13-to-14/](nextjs-13-to-14/) |
+| **Migrate React 18 to 19** — `forwardRef` removal, `use()` hook, form actions | [joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate](https://github.com/joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate) | 1 | [react-18-to-19/](react-18-to-19/) |
+| **Migrate Tailwind CSS 3 to 4** — CSS-first config, `@theme` directive, utility renames | [joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate](https://github.com/joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate) | 4 | [tailwind-3-to-4/](tailwind-3-to-4/) |
+| **Migrate Supabase v1 to v2** — Auth API, Realtime channels, query builder | [salmandotweb/nextjs-supabase-boilerplate](https://github.com/salmandotweb/nextjs-supabase-boilerplate) | 1 | [supabase-v1-to-v2/](supabase-v1-to-v2/) |
+| **Migrate Django 4 to 5** — STORAGES, async views, generated fields | [BobsProgrammingAcademy/student-management-system](https://github.com/BobsProgrammingAcademy/student-management-system) | 11 | [django-4-to-5/](django-4-to-5/) |
+| **Upgrade FastAPI + Pydantic v2** — `model_dump`, `field_validator`, `ConfigDict` | [testdrivenio/fastapi-crud-async](https://github.com/testdrivenio/fastapi-crud-async) | 5 | [fastapi-upgrade/](fastapi-upgrade/) |
+| **Migrate Create React App to Vite** — build config, env variables, imports | [machadop1407/firebase-react-crud](https://github.com/machadop1407/firebase-react-crud) | 2 | [cra-to-vite/](cra-to-vite/) |
+| **Convert JavaScript to TypeScript** — type annotations, interfaces, tsconfig | [fraigo/node-express-rest-api-example](https://github.com/fraigo/node-express-rest-api-example) | 2 | [js-to-typescript/](js-to-typescript/) |
+| **Convert React Class Components to Hooks** — useState, useEffect, useRef | [devat-youtuber/shopping-cart-react](https://github.com/devat-youtuber/shopping-cart-react) | 9 | [react-class-to-hooks/](react-class-to-hooks/) |
+
+### Tier 2 — Architecture Migrations
+
+Switch frameworks, ORMs, bundlers, and backend providers without starting from scratch.
+
+| Migration | Original Repo | Files Migrated | Folder |
+|-----------|--------------|----------------|--------|
+| **Migrate Vue 2 to Vue 3** — Composition API, `createApp()`, v-model, Pinia | [lstoeferle/vite-vue2-starter](https://github.com/lstoeferle/vite-vue2-starter) | 3 | [vue-2-to-3/](vue-2-to-3/) |
+| **Migrate Angular 16 to 17** — standalone components, new control flow, signals | [bezkoder/angular-16-crud-example](https://github.com/bezkoder/angular-16-crud-example) | 18 | [angular-16-to-17/](angular-16-to-17/) |
+| **Migrate Nuxt 2 to Nuxt 3** — Nitro server, composables, auto-imports | [nuxt-community/typescript-template](https://github.com/nuxt-community/typescript-template) | 9 | [nuxt-2-to-3/](nuxt-2-to-3/) |
+| **Migrate Next.js Pages Router to App Router** — Server Components, layouts, metadata | [prisma/blogr-nextjs-prisma](https://github.com/prisma/blogr-nextjs-prisma) | 6 | [pages-to-app-router/](pages-to-app-router/) |
+| **Migrate Webpack to Vite** — config, loaders to plugins, HMR, ESM | [taniarascia/webpack-boilerplate](https://github.com/taniarascia/webpack-boilerplate) | 6 | [webpack-to-vite/](webpack-to-vite/) |
+| **Convert CommonJS to ESM** — `require()` to `import`, `module.exports` to `export` | [fraigo/node-express-rest-api-example](https://github.com/fraigo/node-express-rest-api-example) | 3 | [commonjs-to-esm/](commonjs-to-esm/) |
+| **Migrate Prisma to Drizzle ORM** — schema, queries, relations, types | [berthutapea/typescript-express-prisma-starter](https://github.com/berthutapea/typescript-express-prisma-starter) | 11 | [prisma-to-drizzle/](prisma-to-drizzle/) |
+| **Migrate Firebase to Supabase** — Auth, Firestore to Postgres, Storage, Realtime | [machadop1407/firebase-react-crud](https://github.com/machadop1407/firebase-react-crud) | 3 | [firebase-to-supabase/](firebase-to-supabase/) |
+| **Migrate Supabase to Neon** — serverless driver, Drizzle ORM, connection pooling | [Ali-Onar/nextjs-supabase-todo-app](https://github.com/Ali-Onar/nextjs-supabase-todo-app) | 10 | [supabase-to-neon/](supabase-to-neon/) |
+| **Migrate Supabase to Raw Postgres** — `pg` client, standalone auth, connection pools | [Ali-Onar/nextjs-supabase-todo-app](https://github.com/Ali-Onar/nextjs-supabase-todo-app) | 8 | [supabase-to-raw-postgres/](supabase-to-raw-postgres/) |
+| **Migrate NextAuth v4 to Auth.js v5** — `auth()` function, Edge middleware, config | [janhbnr/nextauth-nextjs14-starter](https://github.com/janhbnr/nextauth-nextjs14-starter) | 12 | [nextauth-v4-to-v5/](nextauth-v4-to-v5/) |
+
+### Tier 3 — Platform Migrations
+
+Move between CMS platforms, e-commerce systems, and hosting providers.
+
+| Migration | Original Repo | Files Migrated | Folder |
+|-----------|--------------|----------------|--------|
+| **Migrate WordPress 5.x to 6.x** — block editor, `theme.json`, block patterns | [gregsullivan/_tw](https://github.com/gregsullivan/_tw) | 13 | [wordpress-5-to-6/](wordpress-5-to-6/) |
+| **Migrate WordPress to Headless Next.js** — PHP to React, WP REST API, decoupled | [psorensen/tailwind_s](https://github.com/psorensen/tailwind_s) | 20 | [wordpress-to-headless/](wordpress-to-headless/) |
+| **Migrate WooCommerce to Shopify** — products, Liquid themes, payment gateways | [tutsplus/developing-a-woocommerce-theme](https://github.com/tutsplus/developing-a-woocommerce-theme) | 3 | [woocommerce-to-shopify/](woocommerce-to-shopify/) |
+| **Migrate PHP Themes to Block Themes** — `template-parts` to blocks, `theme.json` | [psorensen/tailwind_s](https://github.com/psorensen/tailwind_s) | 19 | [php-to-block-themes/](php-to-block-themes/) |
+| **Migrate Elementor to Native Blocks** — widget to block conversion, CSS cleanup | [bmarshall511/elementor-awesomesauce](https://github.com/bmarshall511/elementor-awesomesauce) | 2 | [elementor-to-blocks/](elementor-to-blocks/) |
+| **Migrate ACF to Native Meta Fields** — `get_field()` to `get_post_meta()` | [steam0r/acf-wp-theme-skeleton](https://github.com/steam0r/acf-wp-theme-skeleton) | 2 | [acf-to-native-fields/](acf-to-native-fields/) |
+| **Migrate WordPress to Webflow** — content export, URL mapping, SEO redirects | [psorensen/tailwind_s](https://github.com/psorensen/tailwind_s) | 12 | [wordpress-to-webflow/](wordpress-to-webflow/) |
+
+**Total: 28/28 migrations passed. 195 files migrated across 20 real open-source repositories.**
+
+---
+
+## How MigrateBot Works
+
+MigrateBot runs every project through a 5-stage pipeline:
+
+```
+Upload → Detect → Classify → Transform → Validate → Download
+```
+
+| Stage | What Happens |
+|-------|-------------|
+| **Detect** | Verifies the project matches the selected migration type (checks package.json, config files, framework versions) |
+| **Classify** | Categorizes each source file by what needs to change (async APIs, caching, config, dependencies, etc.) |
+| **Transform** | Applies **deterministic transforms** for mechanical changes (version bumps, config renames) + **AI transforms** (Claude Sonnet) for complex code pattern rewrites |
+| **Validate** | Checks every transformed file for syntax issues (balanced brackets, unresolved markers) |
+| **Package** | Bundles the migrated codebase with migration reports and inline documentation |
+
+### What makes MigrateBot different from codemods?
+
+Traditional codemods handle simple find-and-replace patterns. MigrateBot combines deterministic transforms with AI-powered code analysis:
+
+- **Deterministic transforms** handle the predictable stuff — bumping `"next": "^14.2.0"` to `"^15.0.0"` in package.json, renaming `serverComponentsExternalPackages` to `serverExternalPackages` in next.config.js
+- **AI transforms** handle the hard stuff — converting Vue 2 Options API to Composition API, rewriting Prisma queries to Drizzle query builder syntax, converting Firebase Firestore calls to Supabase client calls
+- **Context-aware** — Claude receives the full file content, package.json, config files, and migration-specific system prompts with comprehensive rules and examples
+- **Documented output** — every change is annotated with `// MIGRATED:` comments, and ambiguous transforms are flagged with `// TODO: Manual review`
+
+---
+
+## Supported Migrations
+
+MigrateBot supports **28 migration types** across three tiers:
+
+### Framework Upgrades
+- Migrate Next.js 14 to 15 | Migrate Next.js 13 to 14
+- Migrate React 18 to 19 | Migrate Tailwind CSS 3 to 4
+- Migrate Supabase v1 to v2 | Migrate Django 4 to 5
+- Upgrade FastAPI + Pydantic v2 | Migrate CRA to Vite
+- Convert JavaScript to TypeScript | Convert React Class Components to Hooks
+
+### Architecture Migrations
+- Migrate Vue 2 to 3 | Migrate Angular 16 to 17 | Migrate Nuxt 2 to 3
+- Migrate Next.js Pages Router to App Router | Migrate Webpack to Vite
+- Convert CommonJS to ESM | Migrate Prisma to Drizzle ORM
+- Migrate Firebase to Supabase | Migrate Supabase to Neon | Migrate Supabase to Raw Postgres
+- Migrate NextAuth v4 to Auth.js v5
+
+### Platform Migrations
+- Migrate WordPress 5.x to 6.x | Migrate WordPress to Headless Next.js
+- Migrate WooCommerce to Shopify | Migrate PHP Themes to Block Themes
+- Migrate Elementor to Native Blocks | Migrate ACF to Native Meta Fields
+- Migrate WordPress to Webflow
+
+---
+
+## Try It Yourself
+
+MigrateBot works with any public GitHub repository or ZIP upload.
+
+1. Go to [migratebot-lac.vercel.app](https://migratebot-lac.vercel.app)
+2. Paste a GitHub URL or upload a ZIP
+3. Select your migration type
+4. Review the migration plan
+5. Download your migrated codebase
+
+**Free tier includes 1 migration.** Paid plans start at $9/month for 5 migrations.
 
 [**Try MigrateBot Free →**](https://migratebot-lac.vercel.app)
 
 ---
 
-*Generated by [MigrateBot](https://migratebot-lac.vercel.app) on March 11, 2026*
+## Tech Stack
+
+MigrateBot is built with:
+
+- **Frontend** — Next.js, React 19, Tailwind CSS 4, Framer Motion
+- **AI Engine** — Anthropic Claude Sonnet with prompt caching
+- **Backend** — Supabase (PostgreSQL, Auth, Storage, Realtime), Inngest (durable background jobs)
+- **Testing** — Vitest with 1,007 integration tests across all 28 rule sets
+
+---
+
+## Keywords
+
+migrate nextjs 14 to 15, migrate nextjs 13 to 14, upgrade next.js, migrate react 18 to 19, upgrade react, migrate tailwind css 3 to 4, upgrade tailwindcss, migrate vue 2 to vue 3, vue 3 migration tool, migrate angular 16 to 17, angular migration, migrate nuxt 2 to nuxt 3, nuxt 3 migration, next.js pages router to app router, app router migration, migrate webpack to vite, vite migration tool, convert commonjs to esm, esm migration, migrate prisma to drizzle, drizzle orm migration, migrate firebase to supabase, firebase migration tool, migrate supabase to neon, neon migration, migrate nextauth v4 to auth.js v5, authjs migration, migrate django 4 to 5, django upgrade, upgrade fastapi pydantic v2, migrate cra to vite, create react app to vite, convert javascript to typescript, typescript migration, react class components to hooks, hooks migration, migrate wordpress 5 to 6, wordpress upgrade, wordpress to headless nextjs, headless wordpress, migrate woocommerce to shopify, shopify migration, php themes to block themes, block theme migration, elementor to gutenberg blocks, migrate acf to native fields, wordpress to webflow, webflow migration, ai code migration tool, automatic framework migration, code migration tool, ai-powered code upgrade
+
+---
+
+*All 28 examples generated by [MigrateBot](https://migratebot-lac.vercel.app) on March 11, 2026. Built by [@arthi-arumugam99](https://github.com/arthi-arumugam99).*
