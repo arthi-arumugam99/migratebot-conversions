@@ -1,0 +1,10 @@
+.textblock {
+
+  .headline {
+    @include font-big();
+  }
+
+  .text {
+    color: color('primary-two');
+  }
+}

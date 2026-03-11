@@ -1,0 +1,15 @@
+// browser reset styles go here
+
+body {
+  margin: 0;
+
+  @include font-default();
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:focus, :active, :hover {
+  outline: none;
+}

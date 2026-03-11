@@ -1,0 +1,64 @@
+// holds general mixins
+
+/// font style (default)
+/// @param {string} $font-weight ['medium'] font weight
+/// @param {string} $color [$font-primary-color] font color
+@mixin font-default() {
+  font-family: $font-primary;
+  font-style: normal;
+  line-height: 1.3;
+  @include font-medium();
+}
+
+@mixin font-small() {
+  @include tablet-landscape-and-up() {
+    font-size: $font-size-small;
+  }
+
+  @include tablet-portrait-and-below() {
+    font-size: $font-size-small-mobile;
+  }
+
+}
+
+
+@mixin font-medium() {
+  @include tablet-landscape-and-up() {
+    font-size: $font-size-medium;
+  }
+
+  @include tablet-portrait-and-below() {
+    font-size: $font-size-medium-mobile;
+  }
+}
+
+
+@mixin font-bigger() {
+  @include tablet-landscape-and-up() {
+    font-size: $font-size-bigger;
+  }
+
+  @include tablet-portrait-and-below() {
+    font-size: $font-size-bigger-mobile;
+  }
+}
+
+@mixin font-big() {
+  @include tablet-landscape-and-up() {
+    font-size: $font-size-big;
+  }
+
+  @include tablet-portrait-and-below() {
+    font-size: $font-size-big-mobile;
+  }
+}
+
+@mixin font-extra() {
+  @include tablet-landscape-and-up() {
+    font-size: $font-size-extra;
+  }
+
+  @include tablet-portrait-and-below() {
+    font-size: $font-size-extra-mobile;
+  }
+}

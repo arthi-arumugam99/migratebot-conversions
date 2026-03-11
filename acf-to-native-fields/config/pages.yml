@@ -1,0 +1,30 @@
+home:
+  order: 0
+  title: "Home"
+  url: /
+about:
+  order: 1
+  title: "About"
+  url: /about/
+  pages:
+    one:
+      order: 3
+      title: "One"
+      url: /one/
+    two:
+      order: 4
+      title: "Two"
+      url: /two/
+    three:
+      order: 5
+      title: "Three"
+      url: /three/
+privacy:
+  order: -1
+  title: "Privacy"
+  url: /privacy/
+imprint:
+  order: -1
+  title: "Imprint"
+  url: /imprint/
+

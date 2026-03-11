@@ -1,0 +1,60 @@
+/*!
+Theme Name: _tw
+Theme URI: https://underscoretw.com/
+Description: A custom theme based on _tw
+Version: 0.1.0
+Author: underscoretw.com
+Author URI: https://underscoretw.com/
+Text Domain: _tw
+Requires at least: 6.0
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: LICENSE
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+_tw is based on _tw https://underscoretw.com/, (C) 2021-2026 Greg Sullivan
+_tw is distributed under the terms of the GNU GPL v2 or later.
+
+_tw is based on Underscores https://underscores.me/ and Varia https://github.com/Automattic/themes/tree/master/varia, (C) 2012-2026 Automattic, Inc.
+Underscores and Varia are distributed under the terms of the GNU GPL v2 or later.
+*/
+
+/* MIGRATED: WP 6.x — Updated "Requires at least" from 6.8 to 6.0 to reflect the minimum WP version for FSE/theme.json block theme support */
+
+/* TODO: Manual review — This theme uses Tailwind CSS (via PostCSS build pipeline) to generate style.css at build time.
+   Review the PostCSS/Tailwind build configuration (tailwind.css, postcss.config.*) to ensure any
+   add_theme_support() calls in functions.php for editor-color-palette, editor-font-sizes,
+   editor-gradient-presets, custom-spacing, custom-line-height, custom-units, align-wide,
+   appearance-tools, responsive-embeds, or wp-block-styles are migrated to a theme.json file.
+
+   Recommended theme.json starting structure for this theme:
+   {
+     "$schema": "https://schemas.wp.org/trunk/theme.json",
+     "version": 2,
+     "settings": {
+       "appearanceTools": true,
+       "color": {
+         "palette": []
+       },
+       "typography": {
+         "fontSizes": [],
+         "lineHeight": true
+       },
+       "spacing": {
+         "padding": true,
+         "margin": true,
+         "units": ["px", "em", "rem", "%", "vw", "vh"]
+       },
+       "layout": {
+         "contentSize": "800px",
+         "wideSize": "1200px"
+       }
+     },
+     "styles": {}
+   }
+
+   Place theme.json in the root of the theme directory (theme/theme.json).
+   The Tailwind-generated CSS in style.css will continue to work alongside theme.json global styles.
+*/

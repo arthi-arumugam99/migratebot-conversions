@@ -1,0 +1,19 @@
+// defines colors to be then used with the color() mixin
+
+$colors: (
+        primary-one: rgb(0, 0, 0),
+        primary-two: rgb(255, 0, 0),
+        primary-three: rgb(255, 255, 255),
+);
+
+@each $name, $color in $colors {
+  .text-#{$name} {
+    color: $color;
+  }
+}
+
+@each $name, $color in $colors {
+  .background-#{$name} {
+    background-color: $color;
+  }
+}

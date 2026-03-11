@@ -1,0 +1,81 @@
+// MIGRATED: Converted from Prisma schema (prisma/schema.prisma) to Drizzle ORM TypeScript schema
+// MIGRATED: Provider changed from MySQL to pg-core (adjust imports if using mysql-core)
+// TODO: Manual review needed -- original datasource used MySQL; if staying on MySQL, replace 'drizzle-orm/pg-core' with 'drizzle-orm/mysql-core' and adjust types accordingly
+
+import {
+  mysqlTable,
+  varchar,
+  int,
+  index,
+} from 'drizzle-orm/mysql-core';
+import { relations } from 'drizzle-orm';
+
+// MIGRATED: model User -> mysqlTable('users', ...) using @@map("users")
+export const users = mysqlTable('users', {
+  // MIGRATED: @id -> .primaryKey()
+  username: varchar('username', { length: 100 }).primaryKey(),
+  // MIGRATED: @db.VarChar(100) -> varchar({ length: 100 }).notNull()
+  password: varchar('password', { length: 100 }).notNull(),
+  // MIGRATED: @db.VarChar(100) -> varchar({ length: 100 }).notNull()
+  name: varchar('name', { length: 100 }).notNull(),
+  // MIGRATED: String? -> nullable by default in Drizzle (no .notNull())
+  token: varchar('token', { length: 100 }),
+});
+
+// MIGRATED: model Contact -> mysqlTable('contacts', ...) using @@map("contacts")
+export const contacts = mysqlTable('contacts', {
+  // MIGRATED: @id @default(autoincrement()) -> int().autoincrement().primaryKey()
+  id: int('id').autoincrement().primaryKey(),
+  // MIGRATED: @db.VarChar(100) -> varchar({ length: 100 }).notNull()
+  first_name: varchar('first_name', { length: 100 }).notNull(),
+  // MIGRATED: String? @db.VarChar(100) -> nullable varchar
+  last_name: varchar('last_name', { length: 100 }),
+  // MIGRATED: String? @db.VarChar(100) -> nullable varchar
+  email: varchar('email', { length: 100 }),
+  // MIGRATED: String? @db.VarChar(20) -> nullable varchar
+  phone: varchar('phone', { length: 20 }),
+  // MIGRATED: foreign key field for User relation
+  username: varchar('username', { length: 100 }).notNull(),
+});
+
+// MIGRATED: model Address -> mysqlTable('addresses', ...) using @@map("addresses")
+export const addresses = mysqlTable('addresses', {
+  // MIGRATED: @id @default(autoincrement()) -> int().autoincrement().primaryKey()
+  id: int('id').autoincrement().primaryKey(),
+  // MIGRATED: String? @db.VarChar(255) -> nullable varchar
+  street: varchar('street', { length: 255 }),
+  // MIGRATED: String? @db.VarChar(100) -> nullable varchar
+  city: varchar('city', { length: 100 }),
+  // MIGRATED: String? @db.VarChar(100) -> nullable varchar
+  province: varchar('province', { length: 100 }),
+  // MIGRATED: String @db.VarChar(100) -> varchar({ length: 100 }).notNull()
+  country: varchar('country', { length: 100 }).notNull(),
+  // MIGRATED: String @db.VarChar(10) -> varchar({ length: 10 }).notNull()
+  postal_code: varchar('postal_code', { length: 10 }).notNull(),
+  // MIGRATED: foreign key field for Contact relation
+  contact_id: int('contact_id').notNull(),
+});
+
+// MIGRATED: Prisma inline relations -> Drizzle relations() helper
+
+// MIGRATED: User.contacts -> one-to-many relation
+export const usersRelations = relations(users, ({ many }) => ({
+  contacts: many(contacts),
+}));
+
+// MIGRATED: Contact.user (many-to-one) and Contact.addresses (one-to-many)
+export const contactsRelations = relations(contacts, ({ one, many }) => ({
+  user: one(users, {
+    fields: [contacts.username],
+    references: [users.username],
+  }),
+  addresses: many(addresses),
+}));
+
+// MIGRATED: Address.contact -> many-to-one relation
+export const addressesRelations = relations(addresses, ({ one }) => ({
+  contact: one(contacts, {
+    fields: [addresses.contact_id],
+    references: [contacts.id],
+  }),
+}));

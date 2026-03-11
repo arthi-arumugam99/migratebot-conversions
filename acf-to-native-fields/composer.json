@@ -1,0 +1,50 @@
+{
+  "name": "acf-wp-theme-skeleton",
+  "version": "1.0.0",
+  "type": "wordpress-theme",
+  "description": "ACF Wordpress Theme Skeleton",
+  "keywords": [
+    "wordpress",
+    "theme"
+  ],
+  "homepage": "https://github.com/steam0r/acf-wp-theme-skeleton/",
+  "authors": [
+    {
+      "name": "undefined development"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "advanced-custom-fields/advanced-custom-fields-pro",
+        "version": "5.8.11",
+        "type": "library",
+        "dist": {
+          "type": "zip",
+          "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download"
+        },
+        "require": {
+          "philippbaschke/acf-pro-installer": "1.0.2",
+          "composer/installers": "1.9.0"
+        }
+      }
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "Acme": "src/"
+    },
+    "psr-4": {
+      "ThemeSkeleton\\": [
+        "src/"
+      ]
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "yahnis-elsts/plugin-update-checker": "4.9",
+    "advanced-custom-fields/advanced-custom-fields-pro": "5.8.11",
+    "symfony/yaml": "^5.0"
+  }
+}

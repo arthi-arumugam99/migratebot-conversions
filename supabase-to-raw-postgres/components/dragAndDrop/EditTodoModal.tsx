@@ -1,0 +1,99 @@
+import React, { useEffect, useState } from 'react';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { useAuth } from '@clerk/nextjs';
+import toast from 'react-hot-toast';
+
+type EditTodoProps = {
+    open: boolean;
+    todoId: number;
+    handleClose: () => void;
+    refreshTodos: () => Promise<void>;
+};
+
+const EditTodoModal = (props: EditTodoProps) => {
+    const {
+        open, todoId, handleClose, refreshTodos,
+    } = props;
+
+    const [input, setInput] = useState<string>('');
+
+    const { userId } = useAuth();
+
+    const getTodo = async () => {
+        try {
+            // MIGRATED: Supabase query builder → raw SQL (pg)
+            const response = await fetch(`/api/todos/${todoId}`);
+            const { rows } = await response.json();
+            const data = rows?.[0] ?? null;
+
+            if (data) {
+                setInput(data.text);
+            }
+        } catch (err: any) {
+            console.log(err.message);
+        }
+    };
+
+    useEffect(() => {
+        getTodo();
+    }, [todoId]);
+
+    const UpdatedTodo = async () => {
+        const currentTime = new Date().getTime();
+        try {
+            // MIGRATED: Supabase query builder → raw SQL (pg)
+            await fetch(`/api/todos/${todoId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: input, updated_at: currentTime, clerk_user_id: userId }),
+            });
+        } catch (err: any) {
+            console.log(err.message);
+        }
+
+        toast.success('Todo updated successfully.');
+        handleClose();
+        refreshTodos();
+    };
+
+    return (
+        <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-describedby="alert-dialog-slide-description"
+            fullWidth
+        >
+            <DialogTitle>Edit Card</DialogTitle>
+            <IconButton
+                aria-label="close"
+                onClick={handleClose}
+                sx={{
+                    position: 'absolute',
+                    right: 8,
+                    top: 8,
+                    color: (theme) => theme.palette.grey[500],
+                }}
+            >
+                <CloseIcon />
+            </IconButton>
+            <DialogContent>
+                <TextField
+                    size="small"
+                    fullWidth
+                    id="outlined-basic"
+                    label="Title"
+                    variant="outlined"
+                    value={input}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setInput(event.target.value); }}
+                />
+            </DialogContent>
+            <DialogActions>
+                <Button variant="outlined" color="error" onClick={handleClose}>Cancel</Button>
+                <Button variant="outlined" onClick={() => { UpdatedTodo(); }}>Save</Button>
+            </DialogActions>
+        </Dialog>
+    );
+};
+
+export default EditTodoModal;

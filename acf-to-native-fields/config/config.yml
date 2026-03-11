@@ -1,0 +1,12 @@
+config:
+  theme:
+    slug: acf-wp-theme-skeleton
+  release:
+    check: true
+    repository: "https://github.com/steam0r/acf-wp-theme-skeleton.git"
+    token: "${{ secrets.wordpress_update_token }}"
+  site:
+    create_pages: true
+  admin:
+    show_acf: true
+    hide_editor: true
